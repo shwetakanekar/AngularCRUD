@@ -1,0 +1,41 @@
+{
+  "products": [
+    {
+      "productName": "Lenovo",
+      "category": "Laptops",
+      "date": "2022-06-09T18:30:00.000Z",
+      "freshness": "Brand New",
+      "price": 30000,
+      "comment": "Brand new lenovo laptop.",
+      "id": 1
+    },
+    {
+      "productName": "iPhone 10",
+      "category": "Phones",
+      "date": "2022-06-07T18:30:00.000Z",
+      "freshness": "Second Hand",
+      "price": 50000,
+      "comment": "Second hand iPhone 10 ",
+      "id": 2
+    },
+    {
+      "productName": "One Plus",
+      "category": "Phones",
+      "date": "2022-06-12T18:30:00.000Z",
+      "freshness": "Second Hand",
+      "price": 15000,
+      "comment": "Second hand phone",
+      "id": 3
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
