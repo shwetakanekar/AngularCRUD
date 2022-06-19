@@ -53,6 +53,21 @@
   </form>
 </div>
 <div mat-dialog-actions [align]="'end'">
-  <button mat-raised-button color="primary" (click)="addProduct()">Save</button>
+  <button
+    *ngIf="!editData"
+    mat-raised-button
+    color="primary"
+    (click)="addProduct()"
+  >
+    Save
+  </button>
+  <button
+    *ngIf="editData"
+    mat-raised-button
+    color="primary"
+    (click)="updateProduct()"
+  >
+    Update
+  </button>
   <button mat-raised-button color="warn" mat-dialog-close>Close</button>
 </div>

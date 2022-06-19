@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
     'freshness',
     'price',
     'comment',
+    'actions',
   ];
   dataSource!: MatTableDataSource<any>;
 
@@ -34,9 +35,16 @@ export class AppComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialog.open(DialogComponent, {
-      width: '30%',
-    });
+    this.dialog
+      .open(DialogComponent, {
+        width: '30%',
+      })
+      .afterClosed()
+      .subscribe((value) => {
+        if (value === 'Save') {
+          this.getProducts();
+        }
+      });
   }
 
   applyFilter(event: Event) {
@@ -57,6 +65,32 @@ export class AppComponent implements OnInit {
       },
       error: (err) => {
         alert('An error occured while fetching data.');
+      },
+    });
+  }
+
+  editProduct(row: any) {
+    this.dialog
+      .open(DialogComponent, {
+        width: '30%',
+        data: row,
+      })
+      .afterClosed()
+      .subscribe((value) => {
+        if (value === 'Update') {
+          this.getProducts();
+        }
+      });
+  }
+
+  deleteProduct(id: number) {
+    this.api.deleteProduct(id).subscribe({
+      next: (res) => {
+        alert('Product deleted scuuessfully.');
+        this.getProducts();
+      },
+      error: (err) => {
+        alert('An error occured while deleting the product.');
       },
     });
   }
